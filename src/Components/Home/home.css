@@ -1,0 +1,99 @@
+.home-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgb(51, 19, 80);
+    /* filter:contrast(5px); */
+    height: 100vh;
+    width: 100vw;
+    /* row-gap: 30px; */
+}
+.home-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* row-gap: 30px; */
+    /* padding: 30px; */
+
+}
+.content{
+    padding: 180px;
+}
+@keyframes text{
+    100%{
+        left:100%;
+        margin: 0 -35px 0 35px;
+    }
+}
+.content h1{
+    color: aliceblue;
+    font-weight: 600px;
+    position: relative;
+    /* animation-name: text; */
+    /* animation-delay: 3s; */
+    /* transition: ease-in 5s;
+    display: none; */
+}
+.content h1::after{
+    content: "";
+    /* animation-name: text; */
+}
+.content h1::before{
+    content: " ";
+    position: absolute;
+    left: 0%;
+    height: 100%;
+    width: 0%;
+    background: rgb(51, 19, 80);
+    border-right: 2px solid red;
+    animation: text 1.5s steps(10) infinite;
+    /* animation-iteration-count: 1; */
+    transition: ease-in 5s;
+
+}
+.home-image{
+    padding: 40px;
+    height: 420px;
+    width: 400px;
+}
+.img1{
+    height: 400px;
+    width: 380px;
+    border-radius: 8px;
+}
+.linked{
+    padding: 5px;
+}
+.linked :hover{
+    opacity: 0.5;
+}
+.twitterdiv{
+    padding: 5px;
+    /* height: 49px;
+    width: 49px;
+    background-color: white;
+    border-radius: 8px; */
+}
+.twitterdiv:hover{
+    opacity: 0.5;
+    /* padding: 0; */
+    /* height: 0%; */
+    /* width: 0%; */
+    background-color: none;
+}
+.github{
+    padding: 5px;
+}
+.github:hover{
+    opacity: 0.5;
+}
+.instagram{
+    padding: 5px;
+}
+.instagram:hover{
+    opacity: 0.5;
+}
+.home-logos{
+    display: flex;
+   /* padding: 20px; */
+}
