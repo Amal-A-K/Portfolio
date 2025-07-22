@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="bg-white dark:bg-dark-900 border-t border-gray-200 dark:border-dark-700">
-      <div className="container-custom py-12">
+      <div className="container-custom py-12 px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-8 items-center">
           {/* Brand */}
           <motion.div
@@ -34,6 +34,7 @@ const Footer: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="text-center md:text-left"
           >
             <h3 className="text-2xl font-bold text-gradient mb-2">
               {PERSONAL_INFO.name}
