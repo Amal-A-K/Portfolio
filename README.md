@@ -23,7 +23,7 @@ A modern, responsive portfolio website built with React, TypeScript, and Tailwin
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/amal-ak/portfolio-website.git
+git clone https://github.com/Amal-A-K/Portfolio.git
 cd portfolio-website
 ```
 
