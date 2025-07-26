@@ -5,7 +5,7 @@ export const PERSONAL_INFO = {
   title: 'Full Stack Developer | React | Node.js | TypeScript',
   bio: 'Building modern, scalable full-stack web apps using the MERN stack. Clean code enthusiast with strong experience in real-time apps and RESTful APIs.',
   location: 'Trivandrum, Kerala',
-  resumeUrl: '/Amal A K C.V.pdf'
+  resumeUrl: '/Amal A K Resume.pdf'
 };
 
 export const CONTACT_INFO: ContactInfo = {
