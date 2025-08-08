@@ -12,7 +12,10 @@ import {
   SiFirebase,
   SiGit,
   SiPostman,
-  SiExpress 
+  SiExpress,
+  SiVercel,
+  SiNetlify,
+  SiRender
 } from 'react-icons/si';
 import { TECH_STACK } from '../data/constants.ts';
 
@@ -29,7 +32,10 @@ const About: React.FC = () => {
     SiFirebase,
     SiGit,
     SiPostman,
-    SiExpress
+    SiExpress,
+    SiVercel,
+    SiNetlify,
+    SiRender
   };
 
   const containerVariants = {

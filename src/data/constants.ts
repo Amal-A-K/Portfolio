@@ -26,6 +26,9 @@ export const TECH_STACK: TechStack[] = [
   { name: 'Socket.IO', icon: 'SiSocketdotio', category: 'backend' },
   { name: 'Firebase', icon: 'SiFirebase', category: 'backend' },
   { name: 'MongoDB', icon: 'SiMongodb', category: 'database' },
+  { name: 'Vercel', icon: 'SiVercel', category: 'deployment' },
+  { name: 'Netlify', icon: 'SiNetlify', category: 'deployment' },
+  { name: 'Render', icon: 'SiRender', category: 'deployment' },
   { name: 'Git', icon: 'SiGit', category: 'tools' },
   { name: 'Postman', icon: 'SiPostman', category: 'tools' }
 ];
@@ -34,8 +37,8 @@ export const EXPERIENCES: Experience[] = [
   {
     id: '1',
     company: 'Relaxplzz Technologies',
-    role: 'Full Stack Developer Intern',
-    duration: 'Apr 2025 – Present',
+    role: 'MERN Stack Developer ',
+    duration: 'Apr 2025 – Aug 2025',
     description: [
       'Worked on e-commerce based project with modern tech stack',
       'Developed real-time chat application using Socket.IO',
@@ -47,7 +50,7 @@ export const EXPERIENCES: Experience[] = [
   {
     id: '2',
     company: 'Scipy Technologies',
-    role: 'MERN Intern',
+    role: 'MERN Stack Developer',
     duration: 'Jun 2023 – Jan 2024',
     description: [
       'Built comprehensive ERP system with microservice architecture',
@@ -60,19 +63,20 @@ export const EXPERIENCES: Experience[] = [
 ];
 
 export const PROJECTS: Project[] = [
+  
   {
     id: '1',
-    title: 'ERP for Educational Institute',
-    description: 'Comprehensive ERP system with REST APIs, admin dashboards, and scalable architecture for educational institutions.',
-    technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Redux'],
-    githubUrl: 'https://github.com/Amal-A-K/ins-client-side',
-    // liveUrl: 'https://erp-demo.netlify.app'
+    title: 'MERN TODO App',
+    description: 'Built and deployed a full-stack to-do application using MongoDB, Express.js, React.js, and Node.js. Responsible for both front-end and back-end development, including secure user authentication, responsive UI, and database integration. Deployed on Render for scalable cloud hosting.',
+    technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB Atlas', 'Redux', 'Redux Toolkit', 'Tailwind CSS', 'Render'],
+    githubUrl: 'https://github.com/Amal-A-K/MERN-TO-DO-APP',
+    liveUrl: 'https://mern-to-do-app-ui.onrender.com/'
   },
   {
     id: '2',
     title: 'E-Commerce Platform',
     description: 'Full-featured e-commerce platform with product catalog, shopping cart, authentication, and admin panel.',
-    technologies: ['React', 'TypeScript', 'MongoDB', 'Tailwind CSS', 'Node.js'],
+    technologies: ['React', 'TypeScript', 'MongoDB', 'Tailwind CSS', 'Node.js', 'Express.js'],
     githubUrl: 'https://github.com/Amal-A-K/Typescript_Learning/tree/main/E-Commerce',
     // liveUrl: 'https://ecommerce-demo.netlify.app'
   },
@@ -88,8 +92,8 @@ export const PROJECTS: Project[] = [
     id: '4',
     title: 'Dice Game',
     description: 'Interactive dice game with score tracking, game logic, and responsive design.',
-    technologies: ['React', 'JavaScript', 'CSS Modules'],
+    technologies: ['React', 'JavaScript', 'CSS Modules', 'Vercel'],
     githubUrl: 'https://github.com/Amal-A-K/Dice_Game',
-    // liveUrl: 'https://dice-game-demo.netlify.app'
+    liveUrl: 'https://dice-game-nine-inky-78.vercel.app/'
   }
 ];

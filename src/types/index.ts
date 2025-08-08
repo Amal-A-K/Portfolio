@@ -27,5 +27,5 @@ export interface ContactInfo {
 export interface TechStack {
   name: string;
   icon: string;
-  category: 'frontend' | 'backend' | 'database' | 'tools';
+  category: 'frontend' | 'backend' | 'database' | 'tools' | 'deployment';
 }

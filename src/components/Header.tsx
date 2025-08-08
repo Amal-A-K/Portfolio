@@ -99,24 +99,23 @@ const Header: React.FC = () => {
         </div>
 
         {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <motion.nav
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden py-4 border-t border-gray-200 dark:border-dark-700"
-          >
+        <motion.nav
+          initial={{ opacity: 0, height: 0 }}
+          animate={isMobileMenuOpen ? { opacity: 1, height: 'auto' } : { opacity: 0, height: 0 }}
+          className={`md:hidden overflow-hidden ${isScrolled || isMobileMenuOpen ? 'bg-white/80 dark:bg-dark-900/80 backdrop-blur-md' : 'bg-white dark:bg-dark-900'}`}
+        >
+          <div className="py-4 border-t border-gray-200 dark:border-dark-700">
             {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left py-3 px-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 font-medium"
+                className="block w-full text-left py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 font-medium"
               >
                 {item.name}
               </button>
             ))}
-          </motion.nav>
-        )}
+          </div>
+        </motion.nav>
       </div>
     </motion.header>
   );

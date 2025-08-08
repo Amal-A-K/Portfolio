@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiGithub } from 'react-icons/fi';
+import { FiExternalLink, FiGithub } from 'react-icons/fi';
 import { PROJECTS } from '../data/constants.ts';
 
 const Projects: React.FC = () => {
@@ -70,7 +70,7 @@ const Projects: React.FC = () => {
                     >
                       <FiGithub size={20} />
                     </a>
-                    {/* {project.liveUrl && (
+                    {project.liveUrl && (
                       <a
                         href={project.liveUrl}
                         target="_blank"
@@ -80,7 +80,7 @@ const Projects: React.FC = () => {
                       >
                         <FiExternalLink size={20} />
                       </a>
-                    )} */}
+                    )}
                   </div>
                 </div>
 
@@ -117,7 +117,7 @@ const Projects: React.FC = () => {
                     <FiGithub size={16} />
                     Source Code
                   </a>
-                  {/* {project.liveUrl && (
+                  {project.liveUrl && (
                     <a
                       href={project.liveUrl}
                       target="_blank"
@@ -127,7 +127,7 @@ const Projects: React.FC = () => {
                       <FiExternalLink size={16} />
                       Live Demo
                     </a>
-                  )} */}
+                  )}
                 </div>
               </motion.div>
             ))}
