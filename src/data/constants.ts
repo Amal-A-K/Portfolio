@@ -6,7 +6,7 @@ export const PERSONAL_INFO = {
   bio: "Full-stack developer focused on building responsive, scalable web applications using React, Next.js, Node.js, Prisma, and PostgreSQL. Passionate about clean code, performance, and modern UI design with Tailwind CSS and shadcn/ui.",
   location: "Trivandrum, Kerala",
   githubUrl: "https://github.com/Amal-A-K",
-  resumeUrl: "/Amal_AK_Resume.pdf",
+  resumeUrl: "/Amal A K Resume.pdf",
 };
 
 

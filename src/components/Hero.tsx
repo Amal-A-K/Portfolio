@@ -8,7 +8,7 @@ const Hero: React.FC = () => {
     // Create a link element and trigger download
     const link = document.createElement('a');
     link.href = PERSONAL_INFO.resumeUrl;
-    link.download = 'Amal_AK_Resume.pdf';
+    link.download = 'Amal A K Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
