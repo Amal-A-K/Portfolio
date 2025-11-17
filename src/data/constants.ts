@@ -1,12 +1,14 @@
 import { Experience, Project, ContactInfo, TechStack } from '../types';
 
 export const PERSONAL_INFO = {
-  name: 'Amal A K',
-  title: 'Full Stack Developer | React | Node.js | TypeScript',
-  bio: 'Building modern, scalable full-stack web apps using the MERN stack. Clean code enthusiast with strong experience in real-time apps and RESTful APIs.',
-  location: 'Trivandrum, Kerala',
-  resumeUrl: '/Amal A K Resume.pdf'
+  name: "Amal A K",
+  title: "Full Stack Developer | MERN & Next.js",
+  bio: "Full-stack developer focused on building responsive, scalable web applications using React, Next.js, Node.js, Prisma, and PostgreSQL. Passionate about clean code, performance, and modern UI design with Tailwind CSS and shadcn/ui.",
+  location: "Trivandrum, Kerala",
+  githubUrl: "https://github.com/Amal-A-K",
+  resumeUrl: "/Amal_AK_Resume.pdf",
 };
+
 
 export const CONTACT_INFO: ContactInfo = {
   email: 'amal.anandvijay@gmail.com',
@@ -17,15 +19,21 @@ export const CONTACT_INFO: ContactInfo = {
 
 export const TECH_STACK: TechStack[] = [
   { name: 'React', icon: 'SiReact', category: 'frontend' },
+  { name: 'Next.js', icon: 'SiNextdotjs', category: 'frontend' },
   { name: 'JavaScript', icon: 'SiJavascript', category: 'frontend' },
   { name: 'TypeScript', icon: 'SiTypescript', category: 'frontend' },
   { name: 'Tailwind CSS', icon: 'SiTailwindcss', category: 'frontend' },
+  { name: 'Shadcn UI', icon: 'SiShadcnui', category: 'frontend' },
+  { name: 'Material UI', icon: 'SiMui', category: 'frontend' },
   { name: 'Redux', icon: 'SiRedux', category: 'frontend' },
   { name: 'Node.js', icon: 'SiNodedotjs', category: 'backend' },
   { name: 'Express', icon: 'SiExpress', category: 'backend' },
+  { name: 'Prisma ORM', icon: 'SiPrisma', category: 'backend' },
   { name: 'Socket.IO', icon: 'SiSocketdotio', category: 'backend' },
   { name: 'Firebase', icon: 'SiFirebase', category: 'backend' },
   { name: 'MongoDB', icon: 'SiMongodb', category: 'database' },
+  { name: 'PostgreSQL', icon: 'SiPostgresql', category: 'database' },
+  // { name: 'NeonDB', icon: 'SiNeojdb', category: 'database' },
   { name: 'Vercel', icon: 'SiVercel', category: 'deployment' },
   { name: 'Netlify', icon: 'SiNetlify', category: 'deployment' },
   { name: 'Render', icon: 'SiRender', category: 'deployment' },
@@ -63,9 +71,17 @@ export const EXPERIENCES: Experience[] = [
 ];
 
 export const PROJECTS: Project[] = [
-  
   {
     id: '1',
+    title: 'FinSight – Personal Finance Tracker',
+    description: 'Developed a personal finance tracker application to monitor income, expenses, and category-wise insights. Built using Next.js with TypeScript, Prisma ORM, and PostgreSQL (NeonDB) for efficient data handling. The UI was designed with Tailwind CSS and shadcn/ui, ensuring a clean and responsive experience. Deployed on Vercel with automated CI/CD integration.',
+    technologies: ['Next.js', 'TypeScript', 'Prisma ORM', 'PostgreSQL', 'NeonDB', 'Tailwind CSS', 'shadcn/ui', 'Vercel'],
+    githubUrl: 'https://github.com/Amal-A-K/FinSight',
+    liveUrl: 'https://fin-sight-nine.vercel.app/'
+  },
+
+  {
+    id: '2',
     title: 'MERN TODO App',
     description: 'Built and deployed a full-stack to-do application using MongoDB, Express.js, React.js, and Node.js. Responsible for both front-end and back-end development, including secure user authentication, responsive UI, and database integration. Deployed on Render for scalable cloud hosting.',
     technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB Atlas', 'Redux', 'Redux Toolkit', 'Tailwind CSS', 'Render'],
@@ -73,7 +89,7 @@ export const PROJECTS: Project[] = [
     liveUrl: 'https://mern-to-do-app-ui.onrender.com/'
   },
   {
-    id: '2',
+    id: '3',
     title: 'E-Commerce Platform',
     description: 'Full-featured e-commerce platform with product catalog, shopping cart, authentication, and admin panel.',
     technologies: ['React', 'TypeScript', 'MongoDB', 'Tailwind CSS', 'Node.js', 'Express.js'],
@@ -81,7 +97,7 @@ export const PROJECTS: Project[] = [
     // liveUrl: 'https://ecommerce-demo.netlify.app'
   },
   {
-    id: '3',
+    id: '4',
     title: 'Real-time Chat App',
     description: 'Modern chat application with real-time messaging, user authentication, and push notifications.',
     technologies: ['React', 'TypeScript', 'Socket.IO', 'Node.js', 'MongoDB'],
@@ -89,7 +105,7 @@ export const PROJECTS: Project[] = [
     // liveUrl: 'https://chat-app-demo.netlify.app'
   },
   {
-    id: '4',
+    id: '5',
     title: 'Dice Game',
     description: 'Interactive dice game with score tracking, game logic, and responsive design.',
     technologies: ['React', 'JavaScript', 'CSS Modules', 'Vercel'],

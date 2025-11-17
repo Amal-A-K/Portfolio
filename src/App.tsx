@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { ThemeProvider } from './contexts/ThemeContext.tsx';
 import Header from './components/Header.tsx';
 import Hero from './components/Hero.tsx';
@@ -9,6 +9,8 @@ import Contact from './components/Contact.tsx';
 import Footer from './components/Footer.tsx';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   useEffect(() => {
@@ -23,6 +25,18 @@ function App() {
   return (
     <ThemeProvider>
       <div className="App">
+        <ToastContainer
+          position="bottom-right" // You can choose 'top-right', 'bottom-left', etc.
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          // theme="dark" // Using 'dark' theme to match the dark mode style
+        />
         <Header />
         <main>
           <Hero />

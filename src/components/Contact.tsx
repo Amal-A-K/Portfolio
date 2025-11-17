@@ -1,9 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
 import { FiMail, FiPhone, FiLinkedin, FiMapPin, FiSend } from 'react-icons/fi';
 import { CONTACT_INFO, PERSONAL_INFO } from '../data/constants.ts';
+import { toast } from 'react-toastify';
+
+// ⚠️ Environment variables: Replace the placeholders below with your actual .env variable names
+// E.g., process.env.REACT_APP_EMAILJS_SERVICE_ID
+const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID || 'YOUR_EMAILJS_SERVICE_ID';
+const EMAILJS_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 'YOUR_EMAILJS_TEMPLATE_ID';
+const EMAILJS_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || 'YOUR_EMAILJS_PUBLIC_KEY';
 
 const Contact: React.FC = () => {
+  // 1. Add useRef to access the native form element
+  const form = useRef<HTMLFormElement>(null);
+  const [loading, setLoading] = useState(false);
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,12 +33,45 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Create mailto link with form data
-    const subject = encodeURIComponent(formData.subject || 'Contact from Portfolio');
-    const body = encodeURIComponent(
-      `Hi Amal,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    );
-    window.location.href = `mailto:${CONTACT_INFO.email}?subject=${subject}&body=${body}`;
+
+    if (!form.current) return;
+
+    // Check if the IDs are available before sending
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      toast.error('Email service not configured. Please check your .env file.', { position: 'bottom-right' });
+      return;
+    }
+
+    setLoading(true);
+
+    emailjs
+      .sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        form.current, // Pass the form ref
+        EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        (result) => {
+          console.log('EmailJS Success:', result.text);
+          // 🏆 Show success toast
+          toast.success('🎉 Message Sent Successfully! I will get back to you shortly.', {
+            position: 'bottom-right',
+          });
+          // Clear the form data
+          setFormData({ name: '', email: '', subject: '', message: '' }); 
+        },
+        (error) => {
+          console.error('EmailJS Failed:', error.text);
+          // ❌ Show failure toast
+          toast.error('😢 Failed to send message. Please try again or contact me directly.', {
+            position: 'bottom-right',
+          });
+        }
+      )
+      .finally(() => {
+        setLoading(false); // Stop loading regardless of success or failure
+      });
   };
 
   const containerVariants = {
@@ -72,7 +117,7 @@ const Contact: React.FC = () => {
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Information */}
+            {/* Contact Information (No changes here) */}
             <motion.div variants={itemVariants}>
               <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-8">
                 Let's Connect
@@ -161,7 +206,7 @@ const Contact: React.FC = () => {
                 Send a Message
               </h3>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form ref={form} onSubmit={handleSubmit} className="space-y-6"> {/* 👈 ADD ref={form} */}
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -170,7 +215,7 @@ const Contact: React.FC = () => {
                     <input
                       type="text"
                       id="name"
-                      name="name"
+                      name="name" // 👈 Name is crucial for EmailJS template variable
                       value={formData.name}
                       onChange={handleInputChange}
                       required
@@ -185,7 +230,7 @@ const Contact: React.FC = () => {
                     <input
                       type="email"
                       id="email"
-                      name="email"
+                      name="email" // 👈 Name is crucial for EmailJS template variable
                       value={formData.email}
                       onChange={handleInputChange}
                       required
@@ -202,7 +247,7 @@ const Contact: React.FC = () => {
                   <input
                     type="text"
                     id="subject"
-                    name="subject"
+                    name="subject" // 👈 Name is crucial for EmailJS template variable
                     value={formData.subject}
                     onChange={handleInputChange}
                     required
@@ -217,7 +262,7 @@ const Contact: React.FC = () => {
                   </label>
                   <textarea
                     id="message"
-                    name="message"
+                    name="message" // 👈 Name is crucial for EmailJS template variable
                     value={formData.message}
                     onChange={handleInputChange}
                     required
@@ -232,9 +277,11 @@ const Contact: React.FC = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="w-full btn-primary flex items-center justify-center gap-2"
+                  disabled={loading} // 👈 Disable while loading
                 >
                   <FiSend size={20} />
-                  Send Message
+                  {/* 👈 Change button text based on loading state */}
+                  {loading ? 'Sending...' : 'Send Message'}
                 </motion.button>
               </form>
             </motion.div>

@@ -1,14 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  SiReact, 
+import {
+  SiReact,
+  SiNextdotjs,
   SiJavascript,
-  SiNodedotjs, 
-  SiMongodb, 
-  SiTypescript, 
-  SiTailwindcss, 
-  SiRedux, 
-  SiSocketdotio, 
+  SiNodedotjs,
+  SiMongodb,
+  SiPostgresql,
+  SiTypescript,
+  SiTailwindcss,
+  SiShadcnui,
+  SiMui,
+  SiRedux,
+  SiPrisma,
+  SiSocketdotio,
   SiFirebase,
   SiGit,
   SiPostman,
@@ -22,12 +27,17 @@ import { TECH_STACK } from '../data/constants.ts';
 const About: React.FC = () => {
   const techIcons: { [key: string]: React.ComponentType<{ size?: number; className?: string }> } = {
     SiReact,
+    SiNextdotjs,
     SiJavascript,
     SiNodedotjs,
     SiMongodb,
+    SiPostgresql,
     SiTypescript,
     SiTailwindcss,
+    SiShadcnui,
+    SiMui,
     SiRedux,
+    SiPrisma,
     SiSocketdotio,
     SiFirebase,
     SiGit,
@@ -84,22 +94,32 @@ const About: React.FC = () => {
               </h3>
               <div className="space-y-4 text-gray-600 dark:text-gray-400 leading-relaxed">
                 <p>
-                  I'm a passionate full-stack developer with strong expertise in the MERN stack, 
-                  specializing in building modern, scalable web applications. My journey in web 
-                  development has been driven by a love for clean code and innovative solutions.
+                  I'm a passionate <span className="text-primary-600 dark:text-primary-400 font-medium">Full Stack Developer</span>
+                  &nbsp;who enjoys building modern, scalable web applications using the latest technologies in the
+                  JavaScript ecosystem. My focus is on crafting clean, efficient code and designing responsive,
+                  user-friendly interfaces.
                 </p>
                 <p>
-                  With hands-on experience in React, Node.js, and real-time applications, I enjoy 
-                  creating seamless user experiences and robust backend systems. I'm particularly 
-                  enthusiastic about TypeScript, modern React patterns, and building applications 
-                  that scale.
+                  I have hands-on experience developing real-world applications like
+                  <span className="font-medium"> FinSight</span> — a finance tracker built with
+                  <span className="text-primary-600 dark:text-primary-400 font-medium"> Next.js (TypeScript)</span>,
+                  <span className="text-primary-600 dark:text-primary-400 font-medium"> Prisma ORM</span>, and
+                  <span className="text-primary-600 dark:text-primary-400 font-medium"> PostgreSQL (NeonDB)</span>.
+                  I also work extensively with React, Node.js, Express.js, and MongoDB to deliver robust
+                  backend systems and seamless user experiences.
                 </p>
                 <p>
-                  When I'm not coding, you'll find me exploring new technologies, contributing to 
-                  open-source projects, or sharing knowledge with the developer community. I believe 
-                  in continuous learning and staying updated with the latest industry trends.
+                  My current stack includes modern tools like <span className="font-medium">shadcn/ui</span>,
+                  <span className="font-medium"> Tailwind CSS</span>, and
+                  <span className="font-medium"> AI-powered IDEs</span> such as Cursor AI and Windsurf AI, which
+                  help me maintain high code quality and accelerate development.
+                </p>
+                <p>
+                  Outside of coding, I love exploring new frameworks, contributing to open-source projects,
+                  and continuously learning to stay ahead in the ever-evolving web development space.
                 </p>
               </div>
+
 
               {/* Stats */}
               {/* <motion.div 
@@ -122,11 +142,11 @@ const About: React.FC = () => {
               <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-8 text-center lg:text-left">
                 Tech Stack
               </h3>
-              
+
               <div className="grid grid-cols-3 gap-6">
                 {TECH_STACK.map((tech, index) => {
                   const IconComponent = techIcons[tech.icon];
-                  
+
                   return (
                     <motion.div
                       key={tech.name}
@@ -136,9 +156,9 @@ const About: React.FC = () => {
                     >
                       <div className="flex flex-col items-center">
                         {IconComponent && (
-                          <IconComponent 
-                            size={48} 
-                            className="text-primary-600 dark:text-primary-400 group-hover:text-primary-700 dark:group-hover:text-primary-300 transition-colors duration-300 mb-3" 
+                          <IconComponent
+                            size={48}
+                            className="text-primary-600 dark:text-primary-400 group-hover:text-primary-700 dark:group-hover:text-primary-300 transition-colors duration-300 mb-3"
                           />
                         )}
                         <h4 className="font-medium text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
