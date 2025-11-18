@@ -15,7 +15,12 @@ const Hero: React.FC = () => {
   };
 
   const handleGetInTouch = () => {
-    window.location.href = `mailto:${CONTACT_INFO.email}`;
+    const el = document.getElementById('contact');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      window.location.hash = '#contact';
+    }
   };
 
   return (
