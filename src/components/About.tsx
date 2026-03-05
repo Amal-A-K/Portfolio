@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   SiReact,
   SiNextdotjs,
@@ -24,7 +24,11 @@ import {
 } from 'react-icons/si';
 import { TECH_STACK } from '../data/constants.ts';
 
+type Category = 'all' | 'frontend' | 'backend' | 'database' | 'tools' | 'deployment';
+
 const About: React.FC = () => {
+  const [activeCategory, setActiveCategory] = useState<Category>('all');
+
   const techIcons: { [key: string]: React.ComponentType<{ size?: number; className?: string }> } = {
     SiReact,
     SiNextdotjs,
@@ -48,13 +52,31 @@ const About: React.FC = () => {
     SiRender
   };
 
+  const categories: { label: string; value: Category }[] = [
+    { label: 'All', value: 'all' },
+    { label: 'Frontend', value: 'frontend' },
+    { label: 'Backend', value: 'backend' },
+    { label: 'Database', value: 'database' },
+    { label: 'Deployment', value: 'deployment' },
+    { label: 'Tools', value: 'tools' },
+  ];
+
+  const filteredStack = activeCategory === 'all'
+    ? TECH_STACK
+    : TECH_STACK.filter(t => t.category === activeCategory);
+
+  const stats = [
+    { value: '1+', label: 'Years Experience' },
+    { value: '3', label: 'Companies' },
+    { value: '10+', label: 'Projects Built' },
+    { value: '1', label: 'SaaS Architected' },
+  ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
+      transition: { staggerChildren: 0.15 }
     }
   };
 
@@ -63,9 +85,7 @@ const About: React.FC = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6
-      }
+      transition: { duration: 0.6 }
     }
   };
 
@@ -86,100 +106,71 @@ const About: React.FC = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-purple-600 mx-auto rounded-full"></div>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* About Text */}
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Left — Bio + Stats */}
             <motion.div variants={itemVariants}>
               <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
-                Passionate Full Stack Developer
+                Building Scalable Systems
               </h3>
+
               <div className="space-y-4 text-gray-600 dark:text-gray-400 leading-relaxed">
                 <p>
-                  I'm a passionate <span className="text-primary-600 dark:text-primary-400 font-medium">Full Stack Developer</span>
-                  &nbsp;who enjoys building modern, scalable web applications using the latest technologies in the
-                  JavaScript ecosystem. My focus is on crafting clean, efficient code and designing responsive,
-                  user-friendly interfaces.
+                  I'm a <span className="text-primary-600 dark:text-primary-400 font-medium">Full Stack Engineer</span> specialising
+                  in architecting multi-tenant SaaS platforms and production-grade web applications.
+                  I'm currently building <span className="font-medium text-gray-800 dark:text-gray-200">DiagnomIQ</span> at Softnotions —
+                  a healthcare SaaS platform with Database-per-Tenant isolation, automated
+                  Cloudflare DNS provisioning, AWS S3 security, and JWT-based RBAC.
                 </p>
                 <p>
-                  I have hands-on experience developing real-world applications like
-                  <span className="font-medium"> FinSight</span> — a finance tracker built with
-                  <span className="text-primary-600 dark:text-primary-400 font-medium"> Next.js (TypeScript)</span>,
-                  <span className="text-primary-600 dark:text-primary-400 font-medium"> Prisma ORM</span>, and
-                  <span className="text-primary-600 dark:text-primary-400 font-medium"> PostgreSQL (NeonDB)</span>.
-                  I also work extensively with React, Node.js, Express.js, and MongoDB to deliver robust
-                  backend systems and seamless user experiences.
+                  My core stack spans both <span className="text-primary-600 dark:text-primary-400 font-medium">PERN</span> (PostgreSQL,
+                  Express, React, Node.js) and <span className="text-primary-600 dark:text-primary-400 font-medium">MERN</span> (MongoDB)
+                  alongside <span className="text-primary-600 dark:text-primary-400 font-medium">Next.js</span> and <span className="text-primary-600 dark:text-primary-400 font-medium">TypeScript</span>.
+                  I've worked across the full lifecycle — from designing database schemas and
+                  RESTful APIs to building responsive UIs with Tailwind CSS and Shadcn/ui.
                 </p>
                 <p>
-                  My current stack includes modern tools like <span className="font-medium">shadcn/ui</span>,
-                  <span className="font-medium"> Tailwind CSS</span>, and
-                  <span className="font-medium"> AI-powered IDEs</span> such as Cursor AI and Windsurf AI, which
-                  help me maintain high code quality and accelerate development.
-                </p>
-                <p>
-                  Outside of coding, I love exploring new frameworks, contributing to open-source projects,
-                  and continuously learning to stay ahead in the ever-evolving web development space.
+                  I stay sharp using AI-powered IDEs like <span className="font-medium text-gray-800 dark:text-gray-200">Antigravity AI</span>, <span className="font-medium text-gray-800 dark:text-gray-200">Cursor AI</span> and <span className="font-medium text-gray-800 dark:text-gray-200">Windsurf AI</span>,
+                  which let me maintain high code quality while shipping fast. I believe in clean
+                  architecture, ownership, and building things that actually scale.
                 </p>
               </div>
-
 
               {/* Stats */}
-              {/* <motion.div 
+              <motion.div
                 variants={itemVariants}
-                className="grid grid-cols-2 gap-6 mt-8"
+                className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10"
               >
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-600 dark:text-primary-400">2+</div>
-                  <div className="text-gray-600 dark:text-gray-400">Years Experience</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-600 dark:text-primary-400">10+</div>
-                  <div className="text-gray-600 dark:text-gray-400">Projects Completed</div>
-                </div>
-              </motion.div> */}
-            </motion.div>
-
-            {/* Tech Stack */}
-            <motion.div variants={itemVariants}>
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-8 text-center lg:text-left">
-                Tech Stack
-              </h3>
-
-              <div className="grid grid-cols-3 gap-6">
-                {TECH_STACK.map((tech, index) => {
-                  const IconComponent = techIcons[tech.icon];
-
-                  return (
-                    <motion.div
-                      key={tech.name}
-                      variants={itemVariants}
-                      whileHover={{ scale: 1.05, y: -5 }}
-                      className="card text-center group cursor-pointer"
-                    >
-                      <div className="flex flex-col items-center">
-                        {IconComponent && (
-                          <IconComponent
-                            size={48}
-                            className="text-primary-600 dark:text-primary-400 group-hover:text-primary-700 dark:group-hover:text-primary-300 transition-colors duration-300 mb-3"
-                          />
-                        )}
-                        <h4 className="font-medium text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
-                          {tech.name}
-                        </h4>
-                        <span className="text-xs text-gray-500 dark:text-gray-500 mt-1 capitalize">
-                          {tech.category}
-                        </span>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
+                {stats.map((stat) => (
+                  <motion.div
+                    key={stat.label}
+                    whileHover={{ y: -4 }}
+                    className="text-center p-4 rounded-xl bg-gray-50 dark:bg-dark-800 border border-gray-100 dark:border-dark-700"
+                  >
+                    <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
+                      {stat.value}
+                    </div>
+                    <div className="text-xs text-gray-500 dark:text-gray-500 mt-1 leading-tight">
+                      {stat.label}
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
 
               {/* Additional Skills */}
               <motion.div variants={itemVariants} className="mt-8">
-                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                  Additional Skills
+                <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3 uppercase tracking-wide">
+                  Core Competencies
                 </h4>
                 <div className="flex flex-wrap gap-2">
-                  {['RESTful APIs', 'Microservices', 'Responsive Design', 'Agile', 'Problem Solving'].map((skill) => (
+                  {[
+                    'Multi-Tenant Architecture',
+                    'RESTful APIs',
+                    'Database Isolation',
+                    'RBAC & JWT Auth',
+                    'CI/CD',
+                    'Agile',
+                    'Performance Optimisation',
+                  ].map((skill) => (
                     <span
                       key={skill}
                       className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-sm font-medium"
@@ -188,6 +179,70 @@ const About: React.FC = () => {
                     </span>
                   ))}
                 </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Right — Tech Stack with Filter */}
+            <motion.div variants={itemVariants}>
+              <div className="flex items-center justify-between mb-5 flex-wrap gap-3">
+                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
+                  Tech Stack
+                </h3>
+              </div>
+
+              {/* Category Filter */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                {categories.map((cat) => (
+                  <button
+                    key={cat.value}
+                    onClick={() => setActiveCategory(cat.value)}
+                    className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${activeCategory === cat.value
+                        ? 'bg-primary-600 text-white shadow-md'
+                        : 'bg-gray-100 dark:bg-dark-800 text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600 dark:hover:text-primary-400'
+                      }`}
+                  >
+                    {cat.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Tech Grid */}
+              <motion.div
+                layout
+                className="grid grid-cols-3 gap-4"
+              >
+                <AnimatePresence mode="popLayout">
+                  {filteredStack.map((tech) => {
+                    const IconComponent = techIcons[tech.icon];
+                    return (
+                      <motion.div
+                        key={tech.name}
+                        layout
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        transition={{ duration: 0.2 }}
+                        whileHover={{ scale: 1.05, y: -4 }}
+                        className="card text-center group cursor-pointer"
+                      >
+                        <div className="flex flex-col items-center">
+                          {IconComponent && (
+                            <IconComponent
+                              size={40}
+                              className="text-primary-600 dark:text-primary-400 group-hover:text-primary-700 dark:group-hover:text-primary-300 transition-colors duration-300 mb-2"
+                            />
+                          )}
+                          <h4 className="font-medium text-gray-900 dark:text-white text-sm group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
+                            {tech.name}
+                          </h4>
+                          <span className="text-xs text-gray-400 dark:text-gray-600 mt-0.5 capitalize">
+                            {tech.category}
+                          </span>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </AnimatePresence>
               </motion.div>
             </motion.div>
           </div>
