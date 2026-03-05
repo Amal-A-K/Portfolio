@@ -2,18 +2,17 @@ import { Experience, Project, ContactInfo, TechStack } from '../types';
 
 export const PERSONAL_INFO = {
   name: "Amal A K",
-  title: "Full Stack Developer | MERN & Next.js",
-  bio: "Full-stack developer focused on building responsive, scalable web applications using React, Next.js, Node.js, Prisma, and PostgreSQL. Passionate about clean code, performance, and modern UI design with Tailwind CSS and shadcn/ui.",
+  title: "Full Stack Engineer — SaaS Architecture & Multi-Tenant Systems",
+  bio: "Full Stack Developer specialising in architecting Multi-Tenant SaaS platforms and production-grade web applications. Currently building DiagnomIQ — a healthcare SaaS with Database-per-Tenant isolation, automated DNS provisioning, and RBAC using the PERN stack.",
   location: "Trivandrum, Kerala",
   githubUrl: "https://github.com/Amal-A-K",
   resumeUrl: "/Amal A K Resume.pdf",
 };
 
-
 export const CONTACT_INFO: ContactInfo = {
   email: 'amal.anandvijay@gmail.com',
   phone: '+91 9605655082',
-  linkedin: 'https://linkedin.com/in/amal-a-k-3ab219218',
+  linkedin: 'https://www.linkedin.com/in/amal-a-k-3ab219218/',
   github: 'https://github.com/Amal-A-K'
 };
 
@@ -33,7 +32,6 @@ export const TECH_STACK: TechStack[] = [
   { name: 'Firebase', icon: 'SiFirebase', category: 'backend' },
   { name: 'MongoDB', icon: 'SiMongodb', category: 'database' },
   { name: 'PostgreSQL', icon: 'SiPostgresql', category: 'database' },
-  // { name: 'NeonDB', icon: 'SiNeojdb', category: 'database' },
   { name: 'Vercel', icon: 'SiVercel', category: 'deployment' },
   { name: 'Netlify', icon: 'SiNetlify', category: 'deployment' },
   { name: 'Render', icon: 'SiRender', category: 'deployment' },
@@ -44,46 +42,66 @@ export const TECH_STACK: TechStack[] = [
 export const EXPERIENCES: Experience[] = [
   {
     id: '1',
-    company: 'Relaxplzz Technologies',
-    role: 'MERN Stack Developer ',
-    duration: 'Apr 2025 – Aug 2025',
+    company: 'Softnotions Private Limited',
+    role: 'Software Engineer Trainee',
+    duration: 'Jan 2026 – Present',
     description: [
-      'Worked on e-commerce based project with modern tech stack',
-      'Developed real-time chat application using Socket.IO',
-      'Built responsive frontend with React + TypeScript + Tailwind CSS',
-      'Implemented backend services with Node.js + Express + MongoDB'
+      'Spearheading the architectural migration of legacy healthcare systems into DiagnomIQ — a modern, scalable Multi-Tenant SaaS platform built on the PERN stack.',
+      'Engineered a Database-per-Tenant architecture using PostgreSQL and Sequelize, achieving 100% data isolation and security across all tenant repositories.',
+      'Built an automated tenant onboarding flow with Cloudflare DNS subdomain provisioning, dynamic database creation, and AWS S3 bucket folder isolation per tenant.',
+      'Designed custom Tenant DB Middleware for dynamic request routing and implemented a JWT-integrated Role-Based Access Control (RBAC) system.',
+      'Centralised global registrations and subscriptions via a dedicated Platform Database, cleanly separating core business logic from tenant-specific operations.',
     ],
-    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'Socket.IO']
+    technologies: ['React', 'TypeScript', 'Node.js', 'Express.js', 'PostgreSQL', 'Sequelize', 'AWS S3', 'Cloudflare', 'JWT', 'RBAC', 'Tailwind CSS']
   },
   {
     id: '2',
-    company: 'Scipy Technologies',
+    company: 'Relaxplzz Technologies',
+    role: 'MERN Stack Developer',
+    duration: 'Apr 2025 – Aug 2025',
+    description: [
+      'Developed the GiftoMart module — a gift creation and tracking platform — using React, TypeScript, and Tailwind CSS, improving usability and workflow efficiency.',
+      'Implemented RESTful APIs and backend logic with Node.js and Express.js; designed reusable TypeScript components to reduce code redundancy.',
+      'Collaborated cross-functionally with product leads, designers, and QA to translate requirements into scalable, production-ready features.',
+      'Performed debugging and performance improvements, enhancing application responsiveness and system stability.',
+    ],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Express.js', 'MongoDB']
+  },
+  {
+    id: '3',
+    company: 'SciPy Technologies',
     role: 'MERN Stack Developer',
     duration: 'Jun 2023 – Jan 2024',
     description: [
-      'Built comprehensive ERP system with microservice architecture',
-      'Implemented state management using Redux',
-      'Designed responsive UI with React-Bootstrap',
-      'Improved backend response time by 25% and frontend performance by 40%'
+      'Contributed to a microservices-based ERP platform for an educational institute, improving system scalability and modularity.',
+      'Engineered RESTful APIs in Node.js and built responsive client-side UIs using React.js and React-Bootstrap.',
+      'Deployed Redux for centralised and predictable state management across the application.',
+      'Managed MongoDB data storage, consumed external APIs via Axios, and validated all backend endpoints with Postman.',
     ],
-    technologies: ['React', 'Redux', 'MongoDB', 'Node.js', 'Express', 'React-Bootstrap']
+    technologies: ['React', 'Redux', 'Node.js', 'Express.js', 'MongoDB', 'React-Bootstrap', 'Axios']
   }
 ];
 
 export const PROJECTS: Project[] = [
   {
+    id: '0',
+    title: 'DiagnomIQ — Multi-Tenant Healthcare SaaS',
+    description: 'Architected a full multi-tenant SaaS platform for healthcare. Implemented Database-per-Tenant isolation using PostgreSQL and Sequelize, automated tenant onboarding with Cloudflare DNS subdomain provisioning and AWS S3 bucket isolation, and built a robust JWT-based RBAC system with custom Tenant DB Middleware for dynamic request routing.',
+    technologies: ['React', 'TypeScript', 'Node.js', 'Express.js', 'PostgreSQL', 'Sequelize', 'AWS S3', 'Cloudflare', 'JWT', 'RBAC'],
+    // No public GitHub for this one — it's a company project
+  },
+  {
     id: '1',
-    title: 'FinSight – Personal Finance Tracker',
-    description: 'Developed a personal finance tracker application to monitor income, expenses, and category-wise insights. Built using Next.js with TypeScript, Prisma ORM, and PostgreSQL (NeonDB) for efficient data handling. The UI was designed with Tailwind CSS and shadcn/ui, ensuring a clean and responsive experience. Deployed on Vercel with automated CI/CD integration.',
+    title: 'FinSight — Personal Finance Tracker',
+    description: 'Full-stack personal finance application for real-time income and expense tracking with category-wise insights. Built with Next.js and TypeScript, Prisma ORM for type-safe database access, and PostgreSQL on NeonDB. Deployed on Vercel with CI/CD integration.',
     technologies: ['Next.js', 'TypeScript', 'Prisma ORM', 'PostgreSQL', 'NeonDB', 'Tailwind CSS', 'shadcn/ui', 'Vercel'],
     githubUrl: 'https://github.com/Amal-A-K/FinSight',
     liveUrl: 'https://fin-sight-nine.vercel.app/'
   },
-
   {
     id: '2',
     title: 'MERN TODO App',
-    description: 'Built and deployed a full-stack to-do application using MongoDB, Express.js, React.js, and Node.js. Responsible for both front-end and back-end development, including secure user authentication, responsive UI, and database integration. Deployed on Render for scalable cloud hosting.',
+    description: 'Full-stack to-do application with secure user authentication, responsive UI, and cloud database integration. Handles both frontend and backend — React + Redux on the client, Node.js + Express + MongoDB Atlas on the server. Deployed on Render.',
     technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB Atlas', 'Redux', 'Redux Toolkit', 'Tailwind CSS', 'Render'],
     githubUrl: 'https://github.com/Amal-A-K/MERN-TO-DO-APP',
     liveUrl: 'https://mern-to-do-app-ui.onrender.com/'
@@ -91,23 +109,21 @@ export const PROJECTS: Project[] = [
   {
     id: '3',
     title: 'E-Commerce Platform',
-    description: 'Full-featured e-commerce platform with product catalog, shopping cart, authentication, and admin panel.',
+    description: 'Full-featured e-commerce platform with product catalog, shopping cart, user authentication, and an admin panel for inventory management. Built with React, TypeScript, and a Node.js/MongoDB backend.',
     technologies: ['React', 'TypeScript', 'MongoDB', 'Tailwind CSS', 'Node.js', 'Express.js'],
     githubUrl: 'https://github.com/Amal-A-K/Typescript_Learning/tree/main/E-Commerce',
-    // liveUrl: 'https://ecommerce-demo.netlify.app'
   },
   {
     id: '4',
     title: 'Real-time Chat App',
-    description: 'Modern chat application with real-time messaging, user authentication, and push notifications.',
+    description: 'Modern real-time chat application with Socket.IO-powered messaging, user authentication, and a clean responsive UI. Supports multiple chat rooms and live message delivery.',
     technologies: ['React', 'TypeScript', 'Socket.IO', 'Node.js', 'MongoDB'],
     githubUrl: 'https://github.com/Amal-A-K/Typescript_Learning/tree/main/Day-9/ChatApp',
-    // liveUrl: 'https://chat-app-demo.netlify.app'
   },
   {
     id: '5',
     title: 'Dice Game',
-    description: 'Interactive dice game with score tracking, game logic, and responsive design.',
+    description: 'Interactive dice game with score tracking, turn-based game logic, and a fully responsive design. A fun project showcasing clean React state management and UI design.',
     technologies: ['React', 'JavaScript', 'CSS Modules', 'Vercel'],
     githubUrl: 'https://github.com/Amal-A-K/Dice_Game',
     liveUrl: 'https://dice-game-nine-inky-78.vercel.app/'

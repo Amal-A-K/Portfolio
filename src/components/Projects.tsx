@@ -3,45 +3,35 @@ import { motion } from 'framer-motion';
 import { FiExternalLink, FiGithub } from 'react-icons/fi';
 import { PROJECTS } from '../data/constants.ts';
 
-const Projects: React.FC = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6 }
+  }
+};
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6
-      }
-    }
-  };
+const Projects: React.FC = () => {
 
   return (
     <section id="projects" className="section-padding bg-white dark:bg-dark-900">
       <div className="container-custom">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={containerVariants}
-        >
+        <div>
           {/* Section Title */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
               Featured <span className="text-gradient">Projects</span>
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-purple-600 mx-auto rounded-full"></div>
             <p className="text-gray-600 dark:text-gray-400 mt-6 max-w-2xl mx-auto">
-              Here are some of my recent projects that showcase my skills in full-stack development, 
+              Here are some of my recent projects that showcase my skills in full-stack development,
               modern web technologies, and problem-solving abilities.
             </p>
           </motion.div>
@@ -51,7 +41,10 @@ const Projects: React.FC = () => {
             {PROJECTS.map((project, index) => (
               <motion.div
                 key={project.id}
-                variants={itemVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.15 }}
+                variants={cardVariants}
                 whileHover={{ y: -10 }}
                 className="card group"
               >
@@ -135,7 +128,10 @@ const Projects: React.FC = () => {
 
           {/* More Projects CTA */}
           <motion.div
-            variants={itemVariants}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.5 }}
+            transition={{ duration: 0.5 }}
             className="text-center mt-16"
           >
             <p className="text-gray-600 dark:text-gray-400 mb-6">
@@ -153,7 +149,7 @@ const Projects: React.FC = () => {
               View All Projects
             </motion.a>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

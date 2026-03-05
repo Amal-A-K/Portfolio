@@ -3,39 +3,29 @@ import { motion } from 'framer-motion';
 import { FiCalendar } from 'react-icons/fi';
 import { EXPERIENCES } from '../data/constants.ts';
 
-const Experience: React.FC = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
+const cardVariants = {
+  hidden: { opacity: 0, x: -50 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6 }
+  }
+};
 
-  const itemVariants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.6
-      }
-    }
-  };
+const Experience: React.FC = () => {
 
   return (
     <section id="experience" className="section-padding bg-gray-50 dark:bg-dark-800">
       <div className="container-custom">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={containerVariants}
-        >
+        <div>
           {/* Section Title */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
               Work <span className="text-gradient">Experience</span>
             </h2>
@@ -50,10 +40,12 @@ const Experience: React.FC = () => {
             {EXPERIENCES.map((experience, index) => (
               <motion.div
                 key={experience.id}
-                variants={itemVariants}
-                className={`relative flex items-center mb-12 ${
-                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                }`}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.2 }}
+                variants={cardVariants}
+                className={`relative flex items-center mb-12 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                  }`}
               >
                 {/* Timeline Dot */}
                 <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-primary-600 rounded-full border-4 border-white dark:border-dark-800 z-10"></div>
@@ -112,7 +104,10 @@ const Experience: React.FC = () => {
 
           {/* Call to Action */}
           <motion.div
-            variants={itemVariants}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.5 }}
+            transition={{ duration: 0.5 }}
             className="text-center mt-16"
           >
             <p className="text-gray-600 dark:text-gray-400 mb-6">
@@ -132,7 +127,7 @@ const Experience: React.FC = () => {
               Get In Touch
             </motion.button>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
