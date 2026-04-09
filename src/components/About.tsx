@@ -20,8 +20,11 @@ import {
   SiExpress,
   SiVercel,
   SiNetlify,
-  SiRender
+  SiRender,
+  SiSequelize,
+  SiMongoose
 } from 'react-icons/si';
+import { MdBarChart } from 'react-icons/md';
 import { TECH_STACK } from '../data/constants.ts';
 
 type Category = 'all' | 'frontend' | 'backend' | 'database' | 'tools' | 'deployment';
@@ -49,7 +52,10 @@ const About: React.FC = () => {
     SiExpress,
     SiVercel,
     SiNetlify,
-    SiRender
+    SiRender,
+    SiSequelize,
+    SiMongoose,
+    MdBarChart
   };
 
   const categories: { label: string; value: Category }[] = [
@@ -117,7 +123,7 @@ const About: React.FC = () => {
                 <p>
                   I'm a <span className="text-primary-600 dark:text-primary-400 font-medium">Full Stack Engineer</span> specialising
                   in architecting multi-tenant SaaS platforms and production-grade web applications.
-                  I'm currently building <span className="font-medium text-gray-800 dark:text-gray-200">DiagnomIQ</span> at Softnotions —
+                  At Softnotions, I built <span className="font-medium text-gray-800 dark:text-gray-200">DiagnomIQ</span> —
                   a healthcare SaaS platform with Database-per-Tenant isolation, automated
                   Cloudflare DNS provisioning, AWS S3 security, and JWT-based RBAC.
                 </p>
@@ -127,6 +133,11 @@ const About: React.FC = () => {
                   alongside <span className="text-primary-600 dark:text-primary-400 font-medium">Next.js</span> and <span className="text-primary-600 dark:text-primary-400 font-medium">TypeScript</span>.
                   I've worked across the full lifecycle — from designing database schemas and
                   RESTful APIs to building responsive UIs with Tailwind CSS and Shadcn/ui.
+                </p>
+                <p>
+                  I've also worked with <span className="text-primary-600 dark:text-primary-400 font-medium">Amazon Bedrock</span> to build
+                  RAG-based AI integrations in production healthcare systems — designing knowledge bases,
+                  configuring retrieval pipelines, and validating model responses via the Bedrock API.
                 </p>
                 <p>
                   I stay sharp using AI-powered IDEs like <span className="font-medium text-gray-800 dark:text-gray-200">Antigravity AI</span>, <span className="font-medium text-gray-800 dark:text-gray-200">Cursor AI</span> and <span className="font-medium text-gray-800 dark:text-gray-200">Windsurf AI</span>,
@@ -167,6 +178,7 @@ const About: React.FC = () => {
                     'RESTful APIs',
                     'Database Isolation',
                     'RBAC & JWT Auth',
+                    'RAG & AI Integration',
                     'CI/CD',
                     'Agile',
                     'Performance Optimisation',
@@ -197,8 +209,8 @@ const About: React.FC = () => {
                     key={cat.value}
                     onClick={() => setActiveCategory(cat.value)}
                     className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${activeCategory === cat.value
-                        ? 'bg-primary-600 text-white shadow-md'
-                        : 'bg-gray-100 dark:bg-dark-800 text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600 dark:hover:text-primary-400'
+                      ? 'bg-primary-600 text-white shadow-md'
+                      : 'bg-gray-100 dark:bg-dark-800 text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600 dark:hover:text-primary-400'
                       }`}
                   >
                     {cat.label}
