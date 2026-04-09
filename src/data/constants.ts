@@ -3,7 +3,7 @@ import { Experience, Project, ContactInfo, TechStack } from '../types';
 export const PERSONAL_INFO = {
   name: "Amal A K",
   title: "Full Stack Engineer — SaaS Architecture & Multi-Tenant Systems",
-  bio: "Full Stack Developer specialising in architecting Multi-Tenant SaaS platforms and production-grade web applications. Currently building DiagnomIQ — a healthcare SaaS with Database-per-Tenant isolation, automated DNS provisioning, and RBAC using the PERN stack.",
+  bio: "Full Stack Developer specialising in architecting Multi-Tenant SaaS platforms and production-grade web applications. Built DiagnomIQ — a healthcare SaaS with Database-per-Tenant isolation, automated DNS provisioning, and RBAC using the PERN stack.",
   location: "Trivandrum, Kerala",
   githubUrl: "https://github.com/Amal-A-K",
   resumeUrl: "/Amal A K Resume.pdf",
@@ -35,6 +35,9 @@ export const TECH_STACK: TechStack[] = [
   { name: 'Vercel', icon: 'SiVercel', category: 'deployment' },
   { name: 'Netlify', icon: 'SiNetlify', category: 'deployment' },
   { name: 'Render', icon: 'SiRender', category: 'deployment' },
+  { name: 'Recharts', icon: 'MdBarChart', category: 'frontend' },
+  { name: 'Sequelize', icon: 'SiSequelize', category: 'backend' },
+  { name: 'Mongoose', icon: 'SiMongoose', category: 'backend' },
   { name: 'Git', icon: 'SiGit', category: 'tools' },
   { name: 'Postman', icon: 'SiPostman', category: 'tools' }
 ];
@@ -44,13 +47,14 @@ export const EXPERIENCES: Experience[] = [
     id: '1',
     company: 'Softnotions Private Limited',
     role: 'Software Engineer Trainee',
-    duration: 'Jan 2026 – Present',
+    duration: 'Jan 2026 – Apr 2026',
     description: [
-      'Spearheading the architectural migration of legacy healthcare systems into DiagnomIQ — a modern, scalable Multi-Tenant SaaS platform built on the PERN stack.',
+      'Spearheaded the architectural migration of legacy healthcare systems into DiagnomIQ — a modern, scalable Multi-Tenant SaaS platform built on the PERN stack.',
       'Engineered a Database-per-Tenant architecture using PostgreSQL and Sequelize, achieving 100% data isolation and security across all tenant repositories.',
       'Built an automated tenant onboarding flow with Cloudflare DNS subdomain provisioning, dynamic database creation, and AWS S3 bucket folder isolation per tenant.',
       'Designed custom Tenant DB Middleware for dynamic request routing and implemented a JWT-integrated Role-Based Access Control (RBAC) system.',
       'Centralised global registrations and subscriptions via a dedicated Platform Database, cleanly separating core business logic from tenant-specific operations.',
+      'Collaborated with the DevOps team to configure Amazon Bedrock with RAG implementation; created a knowledge base and tested the AI model via the Bedrock API.',
     ],
     technologies: ['React', 'TypeScript', 'Node.js', 'Express.js', 'PostgreSQL', 'Sequelize', 'AWS S3', 'Cloudflare', 'JWT', 'RBAC', 'Tailwind CSS']
   },
@@ -86,8 +90,8 @@ export const PROJECTS: Project[] = [
   {
     id: '0',
     title: 'DiagnomIQ — Multi-Tenant Healthcare SaaS',
-    description: 'Architected a full multi-tenant SaaS platform for healthcare. Implemented Database-per-Tenant isolation using PostgreSQL and Sequelize, automated tenant onboarding with Cloudflare DNS subdomain provisioning and AWS S3 bucket isolation, and built a robust JWT-based RBAC system with custom Tenant DB Middleware for dynamic request routing.',
-    technologies: ['React', 'TypeScript', 'Node.js', 'Express.js', 'PostgreSQL', 'Sequelize', 'AWS S3', 'Cloudflare', 'JWT', 'RBAC'],
+    description: 'Architected a full multi-tenant SaaS platform for healthcare. Implemented Database-per-Tenant isolation using PostgreSQL and Sequelize, automated tenant onboarding with Cloudflare DNS subdomain provisioning and S3 tenant-based folder isolation for sensitive medical data, and built a robust JWT-based RBAC system. Integrated Amazon Bedrock with RAG to power AI-driven clinical insights via a custom knowledge base. Built IPI/aaIPI survival probability charts using Recharts for oncology risk visualisation.',
+    technologies: ['React', 'TypeScript', 'Node.js', 'Express.js', 'PostgreSQL', 'Sequelize', 'AWS S3', 'Amazon Bedrock', 'Recharts', 'Cloudflare', 'JWT', 'RBAC'],
     // No public GitHub for this one — it's a company project
   },
   {
