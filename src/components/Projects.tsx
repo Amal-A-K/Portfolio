@@ -12,6 +12,13 @@ const cardVariants = {
   }
 };
 
+const placeholderGradients = [
+  'bg-gradient-to-br from-primary-600 to-purple-700',
+  'bg-gradient-to-br from-emerald-500 to-teal-700',
+  'bg-gradient-to-br from-orange-500 to-pink-600',
+  'bg-gradient-to-br from-sky-500 to-indigo-700',
+];
+
 const Projects: React.FC = () => {
 
   return (
@@ -46,81 +53,109 @@ const Projects: React.FC = () => {
                 viewport={{ once: false, amount: 0.15 }}
                 variants={cardVariants}
                 whileHover={{ y: -10 }}
-                className="card group"
+                className="card group overflow-hidden !p-0"
               >
-                {/* Project Header */}
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                  <div className="flex gap-3">
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-lg bg-gray-100 dark:bg-dark-700 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-300"
-                      aria-label="View GitHub repository"
+                {/* Project Image / Placeholder Banner */}
+                <div className="relative w-full overflow-hidden rounded-t-xl">
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={`${project.title} screenshot`}
+                      className="w-full h-auto block transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div
+                      className={`w-full min-h-48 flex items-center justify-center ${placeholderGradients[index % placeholderGradients.length]}`}
                     >
-                      <FiGithub size={20} />
-                    </a>
+                      <span className="text-white/30 text-6xl font-black select-none">
+                        {project.title.charAt(0)}
+                      </span>
+                    </div>
+                  )}
+                  {/* Subtle dark overlay on hover */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none" />
+                </div>
+
+                {/* Card Body */}
+                <div className="p-6">
+                  {/* Project Header */}
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    <div className="flex gap-3">
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 rounded-lg bg-gray-100 dark:bg-dark-700 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-300"
+                          aria-label="View GitHub repository"
+                        >
+                          <FiGithub size={20} />
+                        </a>
+                      )}
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 rounded-lg bg-gray-100 dark:bg-dark-700 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-300"
+                          aria-label="View live demo"
+                        >
+                          <FiExternalLink size={20} />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Project Description */}
+                  <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  {/* Technologies */}
+                  <div className="mb-6">
+                    <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
+                      Built with:
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-sm font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Project Links */}
+                  <div className="flex gap-4 pt-4 border-t border-gray-200 dark:border-dark-700">
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300 font-medium"
+                      >
+                        <FiGithub size={16} />
+                        Source Code
+                      </a>
+                    )}
                     {project.liveUrl && (
                       <a
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 rounded-lg bg-gray-100 dark:bg-dark-700 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-300"
-                        aria-label="View live demo"
+                        className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300 font-medium"
                       >
-                        <FiExternalLink size={20} />
+                        <FiExternalLink size={16} />
+                        Live Demo
                       </a>
                     )}
                   </div>
-                </div>
-
-                {/* Project Description */}
-                <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                  {project.description}
-                </p>
-
-                {/* Technologies */}
-                <div className="mb-6">
-                  <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
-                    Built with:
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-sm font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Project Links */}
-                <div className="flex gap-4 pt-4 border-t border-gray-200 dark:border-dark-700">
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300 font-medium"
-                  >
-                    <FiGithub size={16} />
-                    Source Code
-                  </a>
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300 font-medium"
-                    >
-                      <FiExternalLink size={16} />
-                      Live Demo
-                    </a>
-                  )}
                 </div>
               </motion.div>
             ))}

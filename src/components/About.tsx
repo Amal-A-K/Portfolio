@@ -22,12 +22,18 @@ import {
   SiNetlify,
   SiRender,
   SiSequelize,
-  SiMongoose
+  SiMongoose,
+  SiDocker,
+  SiCloudflare,
+  SiAmazons3,
+  SiAmazonwebservices,
+  SiGooglegemini,
+  SiJsonwebtokens
 } from 'react-icons/si';
 import { MdBarChart } from 'react-icons/md';
 import { TECH_STACK } from '../data/constants.ts';
 
-type Category = 'all' | 'frontend' | 'backend' | 'database' | 'tools' | 'deployment';
+type Category = 'all' | 'frontend' | 'backend' | 'database' | 'tools' | 'deployment' | 'ai';
 
 const About: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<Category>('all');
@@ -55,6 +61,13 @@ const About: React.FC = () => {
     SiRender,
     SiSequelize,
     SiMongoose,
+    SiDocker,
+    SiCloudflare,
+    // AWS S3 and Amazon Bedrock both map to the official AWS icon
+    SiAmazons3,
+    SiAmazonwebservices,
+    SiGooglegemini,
+    SiJsonwebtokens,
     MdBarChart
   };
 
@@ -64,6 +77,7 @@ const About: React.FC = () => {
     { label: 'Backend', value: 'backend' },
     { label: 'Database', value: 'database' },
     { label: 'Deployment', value: 'deployment' },
+    { label: 'AI', value: 'ai' },
     { label: 'Tools', value: 'tools' },
   ];
 
@@ -75,7 +89,7 @@ const About: React.FC = () => {
     { value: '1+', label: 'Years Experience' },
     { value: '3', label: 'Companies' },
     { value: '10+', label: 'Projects Built' },
-    { value: '1', label: 'SaaS Architected' },
+    { value: '2', label: 'Production AI Apps' },
   ];
 
   const containerVariants = {
@@ -116,33 +130,45 @@ const About: React.FC = () => {
             {/* Left — Bio + Stats */}
             <motion.div variants={itemVariants}>
               <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
-                Building Scalable Systems
+                Building Production Software
               </h3>
 
               <div className="space-y-4 text-gray-600 dark:text-gray-400 leading-relaxed">
                 <p>
-                  I'm a <span className="text-primary-600 dark:text-primary-400 font-medium">Full Stack Engineer</span> specialising
-                  in architecting multi-tenant SaaS platforms and production-grade web applications.
+                  I'm a <span className="text-primary-600 dark:text-primary-400 font-medium">Full-Stack Engineer</span> who
+                  builds production software across the entire stack —
+                  <span className="font-medium text-gray-800 dark:text-gray-200"> React.js</span>,
+                  <span className="font-medium text-gray-800 dark:text-gray-200"> Next.js</span>,
+                  <span className="font-medium text-gray-800 dark:text-gray-200"> Node.js</span>,
+                  <span className="font-medium text-gray-800 dark:text-gray-200"> Express.js</span>,
+                  <span className="font-medium text-gray-800 dark:text-gray-200"> PostgreSQL</span>,
+                  <span className="font-medium text-gray-800 dark:text-gray-200"> MongoDB</span>, and
+                  <span className="font-medium text-gray-800 dark:text-gray-200"> TypeScript</span>.
+                  I care about clean architecture, RESTful API design, and shipping software that performs at scale.
+                </p>
+                <p>
                   At Softnotions, I built <span className="font-medium text-gray-800 dark:text-gray-200">DiagnomIQ</span> —
-                  a healthcare SaaS platform with Database-per-Tenant isolation, automated
-                  Cloudflare DNS provisioning, AWS S3 security, and JWT-based RBAC.
+                  a production <span className="text-primary-600 dark:text-primary-400 font-medium">Multi-Tenant SaaS</span> platform
+                  for healthcare. I engineered a Database-per-Tenant architecture with automated Cloudflare DNS
+                  provisioning, AWS S3 isolation, JWT authentication, and a granular RBAC system.
+                  I also integrated an <span className="text-primary-600 dark:text-primary-400 font-medium">Amazon Bedrock RAG</span> pipeline
+                  to deliver real-time AI-powered clinical decision support in production.
                 </p>
                 <p>
-                  My core stack spans both <span className="text-primary-600 dark:text-primary-400 font-medium">PERN</span> (PostgreSQL,
-                  Express, React, Node.js) and <span className="text-primary-600 dark:text-primary-400 font-medium">MERN</span> (MongoDB)
-                  alongside <span className="text-primary-600 dark:text-primary-400 font-medium">Next.js</span> and <span className="text-primary-600 dark:text-primary-400 font-medium">TypeScript</span>.
-                  I've worked across the full lifecycle — from designing database schemas and
-                  RESTful APIs to building responsive UIs with Tailwind CSS and Shadcn/ui.
+                  I built <span className="font-medium text-gray-800 dark:text-gray-200">TripMind AI</span> — an
+                  AI travel planning platform that uses <span className="text-primary-600 dark:text-primary-400 font-medium">OCR</span> and
+                  PDF processing to extract booking data, then feeds it into
+                  <span className="text-primary-600 dark:text-primary-400 font-medium"> Google Gemini</span> to generate
+                  structured itineraries. The backend is built on a layered Node.js architecture with
+                  JWT auth, retry logic, and model fallback for production resilience.
                 </p>
                 <p>
-                  I've also worked with <span className="text-primary-600 dark:text-primary-400 font-medium">Amazon Bedrock</span> to build
-                  RAG-based AI integrations in production healthcare systems — designing knowledge bases,
-                  configuring retrieval pipelines, and validating model responses via the Bedrock API.
-                </p>
-                <p>
-                  I stay sharp using AI-powered IDEs like <span className="font-medium text-gray-800 dark:text-gray-200">Antigravity AI</span>, <span className="font-medium text-gray-800 dark:text-gray-200">Cursor AI</span> and <span className="font-medium text-gray-800 dark:text-gray-200">Windsurf AI</span>,
-                  which let me maintain high code quality while shipping fast. I believe in clean
-                  architecture, ownership, and building things that actually scale.
+                  I've contributed to production software across
+                  <span className="font-medium text-gray-800 dark:text-gray-200"> Healthcare</span>,
+                  <span className="font-medium text-gray-800 dark:text-gray-200"> E-commerce</span>, and
+                  <span className="font-medium text-gray-800 dark:text-gray-200"> EdTech</span> — and I'm always looking
+                  for the next engineering problem worth solving. I enjoy building scalable software,
+                  working close to the product, and continuously levelling up.
                 </p>
               </div>
 
@@ -174,14 +200,14 @@ const About: React.FC = () => {
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {[
-                    'Multi-Tenant Architecture',
+                    'Multi-Tenant SaaS',
                     'RESTful APIs',
-                    'Database Isolation',
-                    'RBAC & JWT Auth',
-                    'RAG & AI Integration',
+                    'JWT & RBAC',
+                    'LLM & RAG Integration',
+                    'OCR Pipelines',
+                    'Cloud Integration',
                     'CI/CD',
                     'Agile',
-                    'Performance Optimisation',
                   ].map((skill) => (
                     <span
                       key={skill}
