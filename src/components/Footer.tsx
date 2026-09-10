@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
               {PERSONAL_INFO.name}
             </h3>
             <p className="text-gray-600 dark:text-gray-400">
-              Full Stack Developer
+              Full Stack Software Engineer
             </p>
           </motion.div>
 

@@ -135,7 +135,7 @@ const About: React.FC = () => {
 
               <div className="space-y-4 text-gray-600 dark:text-gray-400 leading-relaxed">
                 <p>
-                  I'm a <span className="text-primary-600 dark:text-primary-400 font-medium">Full-Stack Engineer</span> who
+                  I'm a <span className="text-primary-600 dark:text-primary-400 font-medium">Full-Stack Software Engineer</span> who
                   builds production software across the entire stack —
                   <span className="font-medium text-gray-800 dark:text-gray-200"> React.js</span>,
                   <span className="font-medium text-gray-800 dark:text-gray-200"> Next.js</span>,
