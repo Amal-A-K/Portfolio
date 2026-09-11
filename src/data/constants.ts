@@ -2,8 +2,8 @@ import { Experience, Project, ContactInfo, TechStack } from '../types';
 
 export const PERSONAL_INFO = {
   name: "Amal A K",
-  title: "Full-Stack Engineer | React · Node.js · TypeScript · AI Applications · SaaS",
-  bio: "Full-Stack Engineer with production experience building scalable MERN and PERN applications using React.js, Next.js, Node.js, Express.js, PostgreSQL, MongoDB, and TypeScript. Experienced in multi-tenant SaaS architecture, AI-powered applications using Amazon Bedrock and Google Gemini, RESTful APIs, and cloud-native web development.",
+  title: "Full-Stack Software Engineer | React · Next.js · Node.js · TypeScript · AI Applications · SaaS",
+  bio: "Full-Stack Software Engineer with production experience building scalable MERN and PERN applications using React.js, Next.js, Node.js, Express.js, PostgreSQL, MongoDB, and TypeScript. Experienced in multi-tenant SaaS architecture, AI-powered applications using Amazon Bedrock and Google Gemini, RESTful APIs, and cloud-native web development.",
   location: "Trivandrum, Kerala, India",
   githubUrl: "https://github.com/Amal-A-K",
   resumeUrl: "/Amal A K Resume.pdf",
